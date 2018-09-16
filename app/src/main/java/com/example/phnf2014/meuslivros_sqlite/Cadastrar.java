@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
 
+import java.util.ArrayList;
+
 public class Cadastrar extends AppCompatActivity {
 
     EditText titulo;
@@ -15,6 +17,7 @@ public class Cadastrar extends AppCompatActivity {
     EditText ano;
     RatingBar nota;
     BancoHelper db;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class Cadastrar extends AppCompatActivity {
 
                 Log.i("CADASTRO","Nota:" + avaliacao);
 
+                setResult(RESULT_OK);
                 finish();
             }
         });
@@ -50,6 +54,7 @@ public class Cadastrar extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                setResult(RESULT_CANCELED);
                 finish();
             }
         });

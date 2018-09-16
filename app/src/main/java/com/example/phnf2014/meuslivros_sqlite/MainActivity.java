@@ -1,12 +1,17 @@
 package com.example.phnf2014.meuslivros_sqlite;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final int codigo = 1;
+    private ConstraintLayout x;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
         Button Cadastrar = findViewById(R.id.Cadastrar);
         Button Listar = findViewById(R.id.Listar);
+        x = findViewById(R.id.x);
 
 
         Cadastrar.setOnClickListener(new View.OnClickListener() {
@@ -22,10 +28,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent c = new Intent(getApplicationContext(),Cadastrar.class);
-                Bundle b = new Bundle();
-                b.putInt("cadastrar",1);
-                c.putExtras(b);
-                startActivity(c);
+                startActivityForResult(c,codigo);
 
             }
         });
@@ -35,13 +38,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Intent c1 = new Intent(getApplicationContext(),Listar.class);
-                Bundle b1 = new Bundle();
-                b1.putInt("listar",2);
-                c1.putExtras(b1);
                 startActivity(c1);
-
-
             }
         });
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode,int resultCode, Intent data) {
+
+        if(requestCode == codigo && resultCode == RESULT_OK){
+            //Snackbar
+
+            Snackbar s = Snackbar.make(x,"Livro Cadastrado com Sucesso", Snackbar.LENGTH_SHORT);
+            s.show();
+        }
+
+    }
+
 }
