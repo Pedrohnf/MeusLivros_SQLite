@@ -47,8 +47,6 @@ public class Listar extends AppCompatActivity {
         anolistar.setText(String.valueOf(listaLivros.get(livro_atual).getAno()));
         notalistar.setText(String.valueOf(listaLivros.get(livro_atual).getNota()));
 
-        //desabilitar o botao anterior, já que o primeiro livro
-        anterior.setEnabled(false);
 
         //botao para paginar para o proximo livro da lista
         proximo.setOnClickListener(new View.OnClickListener() {
